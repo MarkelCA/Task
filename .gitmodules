@@ -1,0 +1,6 @@
+[submodule "task-api"]
+	path = task-api
+	url = git@github.com:MarkelCA/task-api.git
+[submodule "task-ui"]
+	path = task-ui
+	url = git@github.com:MarkelCA/task-ui.git
