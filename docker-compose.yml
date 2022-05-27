@@ -4,16 +4,20 @@ services:
     build:
       context: ./task-api
     container_name: task-api
+    environment:
+      - PORT=${SERVER_PORT}
     ports: 
-      - 5000:5000
+      - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - ./task-api/src:/usr/app/src
         
   react-ui:
     build:
       context: ./task-ui
-    ports:
-      - "3000:3000"
+    ports: 
+      - ${UI_PORT}:${UI_PORT}
+    environment:
+      - PORT=${UI_PORT}
     container_name: task-ui
     stdin_open: true
     volumes:
