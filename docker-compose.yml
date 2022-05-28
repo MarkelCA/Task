@@ -18,6 +18,7 @@ services:
       - ${UI_PORT}:${UI_PORT}
     environment:
       - PORT=${UI_PORT}
+      - REACT_APP_SERVER_PORT=${SERVER_PORT}
     container_name: task-ui
     stdin_open: true
     volumes:
