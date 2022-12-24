@@ -16,7 +16,7 @@ To-Do app made with React + Axios + AntD with a Typescript + Express backend API
 2. ```cd Task```
 3. ```cp .env.sample .env```
 4. ```docker-compose up --build```
-5. Visit: ```http://localhost:5000``` (port picked from the env file)
+5. Visit: http://localhost:5000 (port picked from the env file)
 
 ## API
 You can visit the [Postman API Workspace](https://www.postman.com/hui-app/workspace/task-api/overview)
