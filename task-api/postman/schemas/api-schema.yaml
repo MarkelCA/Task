@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Task API'
+  license:
+    name: MIT
+servers:
+  - url: 'localhost:7000'
+paths:
+  /tasks:
+      get:
+        summary: List of all NON completed tasks
+        operationId: PendingTasks
+        responses:
+          200:
+            description: List of all tasks (Can be empty)
+      post:
+        summary: Creates a new task
+        operationId: NewTask
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Task'
+              example:
+                {
+                    "title": "Do shopping",
+                    "completed": false,
+                    "category": "personal",
+                    "date" : 1653809232219,
+                    "description": "Este es el body de la task y me puedo explayar más",
+                    "tags": [1]
+                }
+        responses:
+          200:
+            description: Task Created
+          400:
+            description: Couldn't create, the task provided is not valid
+  /tasks/all:
+      get:
+        summary: Get All Tasks
+        operationId: AllTasks
+        responses:
+          200:
+            description: List of all tasks (Can be empty)
+  /tasks/{id}:
+      get:
+        summary: Get Task by ID
+        operationId: TaskById
+        parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: A numeric id for the task
+        responses:
+          200:
+            description: The found Task
+          404:
+            description: Task not found
+      put:
+        summary: Updates Task
+        operationId: UpdateTask
+        parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: A numeric id for the task
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Task'
+              example:
+                {
+                    "id": 1,
+                    "title": "Do shopping",
+                    "completed": false,
+                    "category": "personal",
+                    "date" : 1653809232219,
+                    "description": "Este es el body de la task y me puedo explayar más",
+                    "tags": [1]
+                }
+        responses:
+          200:
+            description: Task Created
+          400:
+            description: Couldn't create, the task provided is not valid
+      delete:
+        summary: Delete Task
+        operationId: DeleteTask
+        parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: A numeric id for the task
+        responses:
+          200:
+            description: The task has been deleted or doesn't existed previously  
+  /history:
+      get:
+        summary: Completed Tasks
+        operationId: CompletedTasks
+        responses:
+          200:
+            description: List of all tasks (Can be empty)
+  /tags:
+    get:
+        summary: Tag List
+        operationId: GetTags
+        responses:
+          200:
+            description: List of all tags (Can be empty)
+  /categories:
+    get:
+        summary: Category List
+        operationId: GetCategories
+        responses:
+          200:
+            description: List of all the categories
+components:
+  schemas:
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - completed
+        - category
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        completed:
+          type: boolean
+        category:
+          type: integer
+          format: int64
+        date:  
+          type: integer
+          format: int64
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: integer
+    Tag:
+      type: object
+      required:
+        - id
+        - tagName
+      properties:
+        id:
+          type: integer
+          format: int64
+        tagName:
+          type: string
+    Category:
+      type: object
+      required:
+        - machine_name
+        - fullName
+      properties:
+        fullName:
+          type: string
+        tagName:
+          type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []

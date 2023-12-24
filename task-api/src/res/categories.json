@@ -1,0 +1,12 @@
+{
+    "categories" : [
+        {
+            "machine_name":"personal",
+            "fullName":"Personal"
+        },
+        {
+            "machine_name":"ocio",
+            "fullName":"Ocio"
+        }
+    ]
+}

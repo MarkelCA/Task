@@ -1,0 +1,29 @@
+{
+ "tasks" : [
+    {
+        "id":1,
+        "title": "Do shopping",
+        "completed": false,
+        "category": "personal",
+        "date" : 1653809232219,
+        "description": "Este es el body de la task y me puedo explayar más",
+        "tags": [1]
+    },
+    {
+        "id":2,
+        "title": "Another thing to do",
+        "completed": false,
+        "category": "ocio",
+        "description": "Este es el body de la task y me puedo explayar más"
+    },
+    {
+        "id":3,
+        "title": "Meet Steve",
+        "completed": true,
+        "category": "ocio",
+        "date" :1653809232219,
+        "description": "Este es el body de la task y me puedo explayar más",
+        "tags": [2, 3]
+    }
+]
+}

@@ -1,0 +1,16 @@
+{
+    "tags" : [
+        {
+            "id":1, 
+            "tagName":"Programación"
+        },
+        {
+            "id":2, 
+            "tagName":"Recados"
+        },
+        {
+            "id":3, 
+            "tagName":"Shopping"
+        }
+    ]
+}
